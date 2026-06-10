@@ -1,0 +1,24 @@
+Link failure with automatic rerouting to backup path.
+
+Topology:
+      2
+     / \
+    1   4
+     \ /
+      3
+
+Tests:
+1) Primary path usage before failure
+2) Triggered updates on link failure
+3) Automatic rerouting to backup path
+4) Link recovery detection
+5) Return to optimal path after recovery
+
+Expected behavior:
+- t=100: DATA uses primary path 1→2→4 (cost 20ms)
+- t=150: Link (2,4) fails, triggered updates sent
+- t=200: DATA uses backup path 1→3→4 (cost 50ms)
+- t=300: Link (2,4) recovers, triggered updates sent
+- t=350: DATA uses primary path 1→2→4 again (cost 20ms)
+
+This test verifies resilience and dynamic rerouting capabilities.

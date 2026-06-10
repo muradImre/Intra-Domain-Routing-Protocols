@@ -1,0 +1,16 @@
+Route timeout test (45-second expiration).
+
+Tests:
+1) Route learning via neighbor
+2) Route expiration when updates stop
+3) DATA packet failure when no route exists
+
+Expected behavior:
+- Node 1 initially learns route to node 3 via node 2
+- At t=50s, link (2,3) dies
+- Node 2 stops advertising route to node 3
+- Node 1's route to node 3 expires ~45 seconds after last update
+- At t=100s, DATA packet from 1 to 3 should fail (no valid route)
+
+This test verifies the 45-second route timeout requirement from
+Section 4.2 of the specification.

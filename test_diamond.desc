@@ -1,0 +1,21 @@
+Diamond topology with multiple paths from 1 to 4.
+
+Topology:
+      2
+     / \
+    1   4
+     \ /
+      3
+
+Links: (1,2)=10ms, (1,3)=40ms, (2,4)=10ms, (3,4)=10ms
+
+Tests:
+1) Route selection with multiple available paths
+2) Bellman-Ford chooses minimum cost path
+3) Correct path computation with different link costs
+
+Expected behavior:
+- Path A: 1→2→4 (cost = 20ms) - SHOULD BE CHOSEN
+- Path B: 1→3→4 (cost = 50ms) - SHOULD BE REJECTED
+- DATA packet from 1 to 4 should use path 1→2→4
+- DATA packet from 4 to 1 has equal cost paths (20ms each way)

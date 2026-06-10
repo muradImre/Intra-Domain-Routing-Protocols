@@ -1,0 +1,13 @@
+Multi-hop routing test with 4 nodes in a line topology.
+
+Tests:
+1) Route propagation across multiple hops
+2) Multi-hop DATA packet forwarding in both directions
+3) Convergence time for 3-hop network
+4) Route cost accumulation (10 + 20 + 15 = 45ms)
+
+Expected behavior:
+- Node 1 learns route to node 4 via node 2, then via node 3
+- Node 4 learns route to node 1 via node 3, then via node 2
+- DATA packets traverse all intermediate nodes
+- Routing tables fully converge by ~60s (2 DV update rounds)

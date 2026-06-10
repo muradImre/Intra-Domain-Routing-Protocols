@@ -1,0 +1,19 @@
+Periodic update verification (30-second intervals).
+
+Tests:
+1) Periodic DV updates sent every 30 seconds
+2) Updates occur even when topology is stable
+3) Timing accuracy of periodic updates
+
+Expected behavior:
+- No topology changes occur during simulation
+- DV updates still sent at regular 30-second intervals
+- Expected update times: t ≈ 0, 30000, 60000, 90000, 120000, 150000, 180000
+
+Verification:
+- Parse simulator output for DV packet events
+- Calculate time intervals between successive updates
+- Intervals should be exactly 30000ms (±1ms for timing precision)
+
+This test confirms periodic updates work independently of triggered
+updates, as required by Section 4.2 of the specification.
