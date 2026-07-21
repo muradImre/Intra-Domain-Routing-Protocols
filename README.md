@@ -1,4 +1,4 @@
-# COMP429/556 Project 3: Intra-Domain Routing Protocols
+# Intra-Domain Routing Protocols
 
 ## Author
 
